@@ -954,7 +954,7 @@ double countAnswer(string& str)
 							break;
 						case 'l':
 							dStk.push(num2);
-							num1 = log(num1);//º∆À„ln
+							num1 = log(num1); 
 							cStk.pop();
 							if (strTemp[i] == '+' || strTemp[i] == '-' || strTemp[i] == '*' || strTemp[i] == '/' || strTemp[i] == '/' || strTemp[i] == 'g' || strTemp[i] == 'l' || strTemp[i] == 't' || strTemp[i] == '%' || strTemp[i] == '!')
 							{
