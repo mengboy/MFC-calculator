@@ -620,51 +620,89 @@ double countAnswer(string& str)
 						{
 						case '+':
 							num1 += num2;
+							if (cStk.top() == '+')
+							{//结尾是a+bl的情况
+								cStk.pop();
+							}
 							dStk.push(num1);
 							break;
 						case '-':
 							num2 -= num1;
+							if (cStk.top() == '-')
+							{
+								cStk.pop();
+							}
 							dStk.push(num2);
 							break;
 						case '*':
 							num1 *= num2;
+							if (cStk.top() == '*')
+							{
+								cStk.pop();
+							}
 							dStk.push(num1);
 							break;
 						case '/':
 							num2 /= num1;
+							if (cStk.top() == '/')
+							{
+								cStk.pop();
+							}
 							dStk.push(num2);
 							break;
 						case '%':
 							num2 = (int)num2 % (int)num1;
+							cStk.pop();
 							dStk.push(num2);
 							break;
 						case '^':
 							num1 = pow(num2, num1);
+							cStk.pop();
 							dStk.push(num1);
 							break;
 						case 's':
 							dStk.push(num2);
 							num1 = sin(num1 / 180.0 * 3.1415926);
+							if (cStk.top() == 's')
+							{
+								cStk.pop();
+							}
 							dStk.push(num1);
 							break;
 						case 'c':
 							dStk.push(num2);
 							num1 = cos(num1 / 180.0 * 3.1415926);
+							if (cStk.top() == 'c')
+							{
+								cStk.pop();
+							}
 							dStk.push(num1);
 							break;
 						case 'g':
 							dStk.push(num2);
 							num1 = log10(num1);
+							if (cStk.top() == 'g')
+							{//结尾是a+bl的情况
+								cStk.pop();
+							}
 							dStk.push(num1);
 							break;
 						case 'l':
 							dStk.push(num2);
 							num1 = log(num1);
+							if (cStk.top() == 'l')
+							{
+								cStk.pop();
+							}
 							dStk.push(num1);
 							break;
 						case 't':
 							dStk.push(num2);
 							num1 = tan(num1);
+							if (cStk.top() == 't')
+							{
+								cStk.pop();
+							}
 							dStk.push(num1);
 							break;
 						case '!':
@@ -672,6 +710,10 @@ double countAnswer(string& str)
 							if (num1 >= 0)
 							{
 								num1 = fac(num1);
+							}
+							if (cStk.top() == '!')
+							{
+								cStk.pop();
 							}
 							dStk.push(num1);
 							break;
